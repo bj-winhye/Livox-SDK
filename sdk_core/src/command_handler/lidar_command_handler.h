@@ -24,7 +24,7 @@
 
 #ifndef LIVOX_LIDAR_COMMAND_HANDLER_H_
 #define LIVOX_LIDAR_COMMAND_HANDLER_H_
-#include <boost/smart_ptr.hpp>
+#include <memory>
 #include "command_handler.h"
 
 namespace livox {
@@ -38,11 +38,11 @@ class LidarCommandHandlerImpl : public CommandHandlerImpl {
 
   bool AddDevice(const DeviceInfo &info);
   bool RemoveDevice(uint8_t handle);
-  bool SendCommand(uint8_t handle, const Command &command);
+  livox_status SendCommand(uint8_t handle, const Command &command);
 
  private:
   typedef struct {
-    boost::shared_ptr<CommandChannel> channel;
+    std::shared_ptr<CommandChannel> channel;
     DeviceInfo info;
   } DeviceItem;
   apr_pool_t *mem_pool_;

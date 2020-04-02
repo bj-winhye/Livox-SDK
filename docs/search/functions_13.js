@@ -6,7 +6,7 @@ var searchData=
   ['thousands_5fsep_5fimpl',['thousands_sep_impl',['../namespacefmt_1_1v5_1_1internal.html#a80875403133fef6385e50480459b1136',1,'fmt::v5::internal']]],
   ['thread_5fid',['thread_id',['../namespacespdlog_1_1details_1_1os.html#a74d5902dc227aa662ade3eac75d03c81',1,'spdlog::details::os']]],
   ['thread_5fpool',['thread_pool',['../classspdlog_1_1details_1_1thread__pool.html#a2ac821eb936f7373cc51949fb05e841c',1,'spdlog::details::thread_pool::thread_pool(size_t q_max_items, size_t threads_n)'],['../classspdlog_1_1details_1_1thread__pool.html#a5e8f86d40f81af1d22a21ee0368287b2',1,'spdlog::details::thread_pool::thread_pool(const thread_pool &amp;)=delete'],['../namespacespdlog.html#a6676a1ffb5ea174a2392ab0317bbcff2',1,'spdlog::thread_pool()']]],
-  ['time',['time',['../structfmt_1_1v5_1_1internal_1_1chrono__formatter.html#ac229529f4628b228142ad3babb581225',1,'fmt::v5::internal::chrono_formatter']]],
+  ['time',['time',['../structfmt_1_1v5_1_1internal_1_1chrono__formatter.html#ae83aa89746d6e459a9a15d6e12ad94f7',1,'fmt::v5::internal::chrono_formatter']]],
   ['time_5ffraction',['time_fraction',['../namespacespdlog_1_1details_1_1fmt__helper.html#a27585b20ce58cd861f4e37be0057cc41',1,'spdlog::details::fmt_helper']]],
   ['to12h',['to12h',['../namespacespdlog_1_1details.html#adc1e7c142665b3801b5797f9c8b77bfa',1,'spdlog::details']]],
   ['to_5fchar8_5ft',['to_char8_t',['../namespacefmt_1_1v5_1_1internal.html#adc534aad72fd5f9db229cc9edf622771',1,'fmt::v5::internal']]],
@@ -19,9 +19,9 @@ var searchData=
   ['to_5funsigned',['to_unsigned',['../namespacefmt_1_1v5_1_1internal.html#abef3b695050c4132b4fc4d7f256b9580',1,'fmt::v5::internal']]],
   ['to_5fwstring',['to_wstring',['../namespacefmt_1_1v5.html#aab6607dc16d02c9f81d025f93a15caa4',1,'fmt::v5']]],
   ['tp_5fmutex',['tp_mutex',['../classspdlog_1_1details_1_1registry.html#a0fddfd080598f35c675d618cb5e414c6',1,'spdlog::details::registry']]],
-  ['trace',['trace',['../classspdlog_1_1logger.html#a59a8516fe055c6b78c9b1822148f78ec',1,'spdlog::logger::trace(const char *fmt, const Args &amp;... args)'],['../classspdlog_1_1logger.html#a66e008d30a46c33283c4546f3851a80a',1,'spdlog::logger::trace(const T &amp;msg)'],['../namespacespdlog.html#a0ec6777ea7982bcf7cf85b87b0619b56',1,'spdlog::trace(const char *fmt, const Args &amp;... args)'],['../namespacespdlog.html#a99302a3f872e2cba98f81ac1a2f63321',1,'spdlog::trace(const T &amp;msg)']]],
+  ['trace',['trace',['../classspdlog_1_1logger.html#ad40c4deed02014ba07bd45d216808cb8',1,'spdlog::logger::trace(const char *fmt, const Args &amp;...args)'],['../classspdlog_1_1logger.html#a66e008d30a46c33283c4546f3851a80a',1,'spdlog::logger::trace(const T &amp;msg)'],['../namespacespdlog.html#adc6cdc47f32c1a9d66cedbe05202bbd1',1,'spdlog::trace(const char *fmt, const Args &amp;...args)'],['../namespacespdlog.html#a99302a3f872e2cba98f81ac1a2f63321',1,'spdlog::trace(const T &amp;msg)']]],
   ['truncating_5fiterator',['truncating_iterator',['../classfmt_1_1v5_1_1internal_1_1truncating__iterator_3_01_output_it_00_01std_1_1false__type_01_4.html#a5a99af3c33a7e15fcaa77a387a70c4f7',1,'fmt::v5::internal::truncating_iterator&lt; OutputIt, std::false_type &gt;::truncating_iterator()'],['../classfmt_1_1v5_1_1internal_1_1truncating__iterator_3_01_output_it_00_01std_1_1true__type_01_4.html#a9284d872ba9a7fc8e42a9d9a5d7777de',1,'fmt::v5::internal::truncating_iterator&lt; OutputIt, std::true_type &gt;::truncating_iterator()']]],
   ['truncating_5fiterator_5fbase',['truncating_iterator_base',['../classfmt_1_1v5_1_1internal_1_1truncating__iterator__base.html#a9722e33a6fdfb563b8db59829f133711',1,'fmt::v5::internal::truncating_iterator_base']]],
   ['try_5flock',['try_lock',['../structspdlog_1_1details_1_1null__mutex.html#a1e367b1adaa6305edbe163c4d2021c53',1,'spdlog::details::null_mutex']]],
-  ['type',['type',['../classfmt_1_1v5_1_1basic__format__arg.html#aa66a8b06ab57c780dea7b1759da404a3',1,'fmt::v5::basic_format_arg']]]
+  ['type',['type',['../classfmt_1_1v5_1_1basic__format__arg.html#afade51f5b95d78390fd09449a4a1ddf3',1,'fmt::v5::basic_format_arg']]]
 ];

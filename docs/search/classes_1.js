@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['b_5fformatter',['B_formatter',['../classspdlog_1_1details_1_1_b__formatter.html',1,'spdlog::details::B_formatter'],['../classspdlog_1_1details_1_1b__formatter.html',1,'spdlog::details::b_formatter']]],
+  ['b_5fformatter',['b_formatter',['../classspdlog_1_1details_1_1b__formatter.html',1,'spdlog::details::b_formatter'],['../classspdlog_1_1details_1_1_b__formatter.html',1,'spdlog::details::B_formatter']]],
   ['back_5finsert_5frange',['back_insert_range',['../classfmt_1_1v5_1_1back__insert__range.html',1,'fmt::v5']]],
   ['base_5fsink',['base_sink',['../classspdlog_1_1sinks_1_1base__sink.html',1,'spdlog::sinks']]],
   ['basic_5fbuffer',['basic_buffer',['../classfmt_1_1v5_1_1internal_1_1basic__buffer.html',1,'fmt::v5::internal']]],

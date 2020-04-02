@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['f_5fformatter',['F_formatter',['../classspdlog_1_1details_1_1_f__formatter.html',1,'spdlog::details::F_formatter'],['../classspdlog_1_1details_1_1f__formatter.html',1,'spdlog::details::f_formatter']]],
+  ['f_5fformatter',['f_formatter',['../classspdlog_1_1details_1_1f__formatter.html',1,'spdlog::details::f_formatter'],['../classspdlog_1_1details_1_1_f__formatter.html',1,'spdlog::details::F_formatter']]],
+  ['fancontrolrequestitem',['FanControlRequestItem',['../struct_fan_control_request_item.html',1,'']]],
   ['fastcrc16',['FastCRC16',['../class_fast_c_r_c16.html',1,'']]],
   ['fastcrc32',['FastCRC32',['../class_fast_c_r_c32.html',1,'']]],
   ['file',['file',['../classfmt_1_1v5_1_1file.html',1,'fmt::v5']]],
@@ -24,7 +25,8 @@ var searchData=
   ['format_5fto_5fn_5fresult',['format_to_n_result',['../structfmt_1_1v5_1_1format__to__n__result.html',1,'fmt::v5']]],
   ['format_5ftype',['format_type',['../structfmt_1_1v5_1_1internal_1_1format__type.html',1,'fmt::v5::internal']]],
   ['formatbuf',['formatbuf',['../classfmt_1_1v5_1_1internal_1_1formatbuf.html',1,'fmt::v5::internal']]],
-  ['formatter',['formatter',['../classspdlog_1_1formatter.html',1,'spdlog::formatter'],['../structfmt_1_1v5_1_1formatter.html',1,'fmt::v5::formatter&lt; T, Char, Enable &gt;']]],
+  ['formatter',['formatter',['../classspdlog_1_1formatter.html',1,'spdlog']]],
+  ['formatter',['formatter',['../structfmt_1_1v5_1_1formatter.html',1,'fmt::v5']]],
   ['formatter_3c_20arg_5fjoin_3c_20it_2c_20char_20_3e_2c_20char_20_3e',['formatter&lt; arg_join&lt; It, Char &gt;, Char &gt;',['../structfmt_1_1v5_1_1formatter_3_01arg__join_3_01_it_00_01_char_01_4_00_01_char_01_4.html',1,'fmt::v5']]],
   ['formatter_3c_20basic_5fstring_5fview_3c_20char_20_3e_2c_20char_20_3e',['formatter&lt; basic_string_view&lt; Char &gt;, Char &gt;',['../structfmt_1_1v5_1_1formatter.html',1,'fmt::v5']]],
   ['formatter_3c_20ranget_2c_20char_2c_20typename_20std_3a_3aenable_5fif_3c_20fmt_3a_3ais_5frange_3c_20ranget_20_3e_3a_3avalue_20_3e_3a_3atype_20_3e',['formatter&lt; RangeT, Char, typename std::enable_if&lt; fmt::is_range&lt; RangeT &gt;::value &gt;::type &gt;',['../structfmt_1_1v5_1_1formatter_3_01_range_t_00_01_char_00_01typename_01std_1_1enable__if_3_01fmt_129f3c94877dea4ec3d39c173a7bba127.html',1,'fmt::v5']]],
@@ -35,7 +37,8 @@ var searchData=
   ['formatter_3c_20t_2c_20char_2c_20typename_20std_3a_3aenable_5fif_3c_20internal_3a_3aformat_5ftype_3c_20typename_20buffer_5fcontext_3c_20char_20_3e_3a_3atype_2c_20t_20_3e_3a_3avalue_20_3e_3a_3atype_20_3e',['formatter&lt; T, Char, typename std::enable_if&lt; internal::format_type&lt; typename buffer_context&lt; Char &gt;::type, T &gt;::value &gt;::type &gt;',['../structfmt_1_1v5_1_1formatter_3_01_t_00_01_char_00_01typename_01std_1_1enable__if_3_01internal_1_8f67657c5a3f8dbcc6236217f928ccb5.html',1,'fmt::v5']]],
   ['formatter_3c_20t_2c_20char_2c_20typename_20std_3a_3aenable_5fif_3c_20internal_3a_3ais_5fstreamable_3c_20t_2c_20char_20_3e_3a_3avalue_20_26_26_21internal_3a_3aformat_5ftype_3c_20typename_20buffer_5fcontext_3c_20char_20_3e_3a_3atype_2c_20t_20_3e_3a_3avalue_20_3e_3a_3atype_20_3e',['formatter&lt; T, Char, typename std::enable_if&lt; internal::is_streamable&lt; T, Char &gt;::value &amp;&amp;!internal::format_type&lt; typename buffer_context&lt; Char &gt;::type, T &gt;::value &gt;::type &gt;',['../structfmt_1_1v5_1_1formatter_3_01_t_00_01_char_00_01typename_01std_1_1enable__if_3_01internal_1_a6b64300f4f7ee1d24250c7c28e1fdc2.html',1,'fmt::v5']]],
   ['formatter_3c_20tuplet_2c_20char_2c_20typename_20std_3a_3aenable_5fif_3c_20fmt_3a_3ais_5ftuple_5flike_3c_20tuplet_20_3e_3a_3avalue_20_3e_3a_3atype_20_3e',['formatter&lt; TupleT, Char, typename std::enable_if&lt; fmt::is_tuple_like&lt; TupleT &gt;::value &gt;::type &gt;',['../structfmt_1_1v5_1_1formatter_3_01_tuple_t_00_01_char_00_01typename_01std_1_1enable__if_3_01fmt_102216fc8d8be12d4442006c3947ddce9.html',1,'fmt::v5']]],
-  ['formatter_5ftype',['formatter_type',['../structfmt_1_1v5_1_1basic__printf__context_1_1formatter__type.html',1,'fmt::v5::basic_printf_context&lt; OutputIt, Char, ArgFormatter &gt;::formatter_type&lt; T &gt;'],['../structfmt_1_1v5_1_1basic__format__context_1_1formatter__type.html',1,'fmt::v5::basic_format_context&lt; OutputIt, Char &gt;::formatter_type&lt; T &gt;']]],
+  ['formatter_5ftype',['formatter_type',['../structfmt_1_1v5_1_1basic__printf__context_1_1formatter__type.html',1,'fmt::v5::basic_printf_context']]],
+  ['formatter_5ftype',['formatter_type',['../structfmt_1_1v5_1_1basic__format__context_1_1formatter__type.html',1,'fmt::v5::basic_format_context']]],
   ['formatting_5fbase',['formatting_base',['../structfmt_1_1v5_1_1formatting__base.html',1,'fmt::v5']]],
   ['formatting_5frange',['formatting_range',['../structfmt_1_1v5_1_1formatting__range.html',1,'fmt::v5']]],
   ['formatting_5frange_3c_20char_20_3e',['formatting_range&lt; Char &gt;',['../structfmt_1_1v5_1_1formatting__range.html',1,'fmt::v5']]],

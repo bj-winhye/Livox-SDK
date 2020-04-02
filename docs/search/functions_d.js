@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['name',['name',['../classspdlog_1_1logger.html#ac7c6ed0f30ace90402254dc2d3ef1453',1,'spdlog::logger']]],
+  ['name',['name',['../classspdlog_1_1logger.html#a965147f4736d658065f8ba6e923c1c47',1,'spdlog::logger']]],
   ['name_5fformatter',['name_formatter',['../classspdlog_1_1details_1_1name__formatter.html#a03bf01931018c5c2cd9dcbff64233d6e',1,'spdlog::details::name_formatter']]],
   ['named_5farg',['named_arg',['../structfmt_1_1v5_1_1internal_1_1named__arg.html#a3b6203a5a5308065fc90392a293fed93',1,'fmt::v5::internal::named_arg']]],
   ['named_5farg_5fbase',['named_arg_base',['../structfmt_1_1v5_1_1internal_1_1named__arg__base.html#acb59c24062e1fccd674816adce9558b6',1,'fmt::v5::internal::named_arg_base']]],

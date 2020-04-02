@@ -23,15 +23,15 @@
 //
 
 #include "command_channel.h"
-#include <boost/bind.hpp>
+#include <functional>
+#include <atomic>
 #include "base/logging.h"
 #include "base/network_util.h"
 #include "command_impl.h"
 #include "device_manager.h"
 #include "livox_def.h"
 
-using boost::atomic_uint16_t;
-using boost::bind;
+using std::bind;
 using std::list;
 using std::make_pair;
 using std::map;
@@ -149,7 +149,12 @@ void CommandChannel::OnTimer(apr_time_t now) {
 
 void CommandChannel::Uninit() {
   if (sock_) {
-    loop_->RemoveDelegate(sock_, this);
+    apr_os_thread_t thread_id = apr_os_thread_current();
+    if (apr_os_thread_equal(loop_->GetThreadId(), thread_id)) {
+      loop_->RemoveDelegateSync(sock_);
+    } else {
+      loop_->RemoveDelegate(sock_, this);
+    }
     loop_ = NULL;
     apr_socket_close(sock_);
     sock_ = NULL;
@@ -177,7 +182,7 @@ void CommandChannel::HeartBeat(apr_time_t t) {
                     NULL,
                     0,
                     0,
-                    boost::shared_ptr<CommandCallback>());
+                    std::shared_ptr<CommandCallback>());
     SendInternal(command);
   }
 }
@@ -195,11 +200,14 @@ void CommandChannel::SendInternal(const Command &command) {
   if (rv == APR_SUCCESS) {
     rv = apr_socket_sendto(sock_, sa, 0, (const char *)buf, &apr_size);
   }
+  if (rv != APR_SUCCESS) {
+    (*command.cb)(kStatusSendFailed, handle_, NULL);
+  }
   apr_pool_destroy(subpool);
 }
 
 uint16_t CommandChannel::GenerateSeq() {
-  static atomic_uint16_t seq(1);
+  static std::atomic<std::uint16_t> seq(1);
   uint16_t value = seq.load();
   uint16_t desired = 0;
   do {
@@ -226,7 +234,7 @@ void CommandChannel::OnHeartbeatAck(const CommPacket &) {
 }
 
 void CommandChannel::DeviceDisconnect(uint8_t handle) {
-  DeviceRemove(handle);
+  DeviceRemove(handle,kEventDisconnect);
 }
 
 void CommandChannel::Send(const Command &command) {

@@ -25,9 +25,9 @@
 #ifndef LIVOX_IO_LOOP_H_
 #define LIVOX_IO_LOOP_H_
 
-#include <boost/function.hpp>
-#include <boost/thread/mutex.hpp>
-#include <boost/unordered_map.hpp>
+#include <functional>
+#include <mutex>
+#include <unordered_map>
 #include <utility>
 #include <vector>
 #include "apr_general.h"
@@ -50,7 +50,7 @@ class IOLoop : public noncopyable {
     virtual void OnWake() {}
   };
 
-  typedef boost::function<void(void)> IOLoopTask;
+  typedef std::function<void(void)> IOLoopTask;
 
  public:
   explicit IOLoop(apr_pool_t *mem_pool, bool enable_timer = true, bool enable_wake = true)
@@ -60,9 +60,12 @@ class IOLoop : public noncopyable {
   void Uninit();
   void AddDelegate(apr_socket_t *sock, IOLoopDelegate *delegate, void *data = NULL);
   void RemoveDelegate(apr_socket_t *sock, IOLoopDelegate *delegate);
+  void RemoveDelegateSync(apr_socket_t *sock);
   void Loop();
   bool Wakeup();
   void PostTask(const IOLoopTask &task);
+  void SetThreadId (apr_os_thread_t thread_id) { thread_id_ = thread_id; }
+  apr_os_thread_t GetThreadId () { return thread_id_; }
 
  private:
   void AddDelegateAsync(apr_socket_t *sock, IOLoopDelegate *delegate, void *data);
@@ -71,15 +74,16 @@ class IOLoop : public noncopyable {
  private:
   static const apr_uint32_t kMaxPollCount = 48;
   typedef std::pair<IOLoopDelegate *, void *> ClientData;
-  typedef boost::unordered_map<apr_socket_t *, ClientData *> DelegatesType;
+  typedef std::unordered_map<apr_socket_t *, ClientData *> DelegatesType;
   DelegatesType delegates_;
   apr_pollset_t *pollset_;
   apr_pool_t *mem_pool_;
   apr_time_t last_timeout_;
-  boost::mutex mutex_;
+  std::mutex mutex_;
   bool enable_timer_;
   bool enable_wake_;
   std::vector<IOLoopTask> pending_tasks_;
+  apr_os_thread_t thread_id_;
 };
 
 }  // namespace livox

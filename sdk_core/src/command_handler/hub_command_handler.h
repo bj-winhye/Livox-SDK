@@ -25,7 +25,7 @@
 #ifndef LIVOX_HUB_COMMAND_HANDLER_H_
 #define LIVOX_HUB_COMMAND_HANDLER_H_
 
-#include <boost/scoped_ptr.hpp>
+#include <memory>
 #include "command_handler.h"
 
 namespace livox {
@@ -36,14 +36,14 @@ class HubCommandHandlerImpl : public CommandHandlerImpl {
   void Uninit();
   bool AddDevice(const DeviceInfo &info);
   bool RemoveDevice(uint8_t handle);
-  bool SendCommand(uint8_t handle, const Command &command);
+  livox_status SendCommand(uint8_t handle, const Command &command);
 
  private:
   apr_pool_t *mem_pool_;
   IOLoop *loop_;
   bool is_valid_;
   DeviceInfo hub_info_;
-  boost::scoped_ptr<CommandChannel> channel_;
+  std::unique_ptr<CommandChannel> channel_;
 };
 }  // namespace livox
 #endif  // LIVOX_HUB_COMMAND_HANDLER_H_

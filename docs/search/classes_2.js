@@ -1,12 +1,13 @@
 var searchData=
 [
-  ['c_5fformatter',['C_formatter',['../classspdlog_1_1details_1_1_c__formatter.html',1,'spdlog::details::C_formatter'],['../classspdlog_1_1details_1_1c__formatter.html',1,'spdlog::details::c_formatter']]],
+  ['c_5fformatter',['c_formatter',['../classspdlog_1_1details_1_1c__formatter.html',1,'spdlog::details::c_formatter'],['../classspdlog_1_1details_1_1_c__formatter.html',1,'spdlog::details::C_formatter']]],
   ['ch_5fformatter',['ch_formatter',['../classspdlog_1_1details_1_1ch__formatter.html',1,'spdlog::details']]],
   ['char_5fconverter',['char_converter',['../classfmt_1_1v5_1_1internal_1_1char__converter.html',1,'fmt::v5::internal']]],
   ['char_5fcounter',['char_counter',['../structfmt_1_1v5_1_1internal_1_1char__counter.html',1,'fmt::v5::internal']]],
   ['char_5fspec_5fhandler',['char_spec_handler',['../structfmt_1_1v5_1_1internal_1_1arg__formatter__base_1_1char__spec__handler.html',1,'fmt::v5::internal::arg_formatter_base']]],
   ['char_5fspecs_5fchecker',['char_specs_checker',['../classfmt_1_1v5_1_1internal_1_1char__specs__checker.html',1,'fmt::v5::internal']]],
-  ['char_5ft',['char_t',['../structfmt_1_1v5_1_1internal_1_1char__t.html',1,'fmt::v5::internal::char_t&lt; S &gt;'],['../structfmt_1_1v5_1_1char__t.html',1,'fmt::v5::char_t&lt; S &gt;']]],
+  ['char_5ft',['char_t',['../structfmt_1_1v5_1_1char__t.html',1,'fmt::v5']]],
+  ['char_5ft',['char_t',['../structfmt_1_1v5_1_1internal_1_1char__t.html',1,'fmt::v5::internal']]],
   ['char_5ftraits',['char_traits',['../structfmt_1_1v5_1_1internal_1_1char__traits.html',1,'fmt::v5::internal']]],
   ['char_5ftraits_3c_20char_20_3e',['char_traits&lt; char &gt;',['../structfmt_1_1v5_1_1internal_1_1char__traits_3_01char_01_4.html',1,'fmt::v5::internal']]],
   ['char_5ftraits_3c_20wchar_5ft_20_3e',['char_traits&lt; wchar_t &gt;',['../structfmt_1_1v5_1_1internal_1_1char__traits_3_01wchar__t_01_4.html',1,'fmt::v5::internal']]],

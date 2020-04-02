@@ -25,8 +25,9 @@
 #ifndef LIVOX_COMMAND_HANDLER_H_
 #define LIVOX_COMMAND_HANDLER_H_
 
-#include <boost/smart_ptr.hpp>
-#include <boost/thread/mutex.hpp>
+#include <memory>
+#include <map>
+#include <mutex>
 #include "base/command_callback.h"
 #include "base/util.h"
 #include "command_channel.h"
@@ -46,17 +47,17 @@ class CommandHandler : public noncopyable {
   bool AddDevice(const DeviceInfo &info);
   void RemoveDevice(uint8_t handle);
 
-  bool SendCommand(uint8_t handle,
-                   uint8_t command_set,
-                   uint8_t command_id,
-                   uint8_t *data,
-                   uint16_t length,
-                   const boost::shared_ptr<CommandCallback> &cb);
+  livox_status SendCommand(uint8_t handle,
+                           uint8_t command_set,
+                           uint8_t command_id,
+                           uint8_t *data,
+                           uint16_t length,
+                           const std::shared_ptr<CommandCallback> &cb);
 
-  bool RegisterPush(uint8_t handle,
-                    uint8_t command_set,
-                    uint8_t command_id,
-                    const boost::shared_ptr<CommandCallback> &cb);
+  livox_status RegisterPush(uint8_t handle,
+                            uint8_t command_set,
+                            uint8_t command_id,
+                            const std::shared_ptr<CommandCallback> &cb);
 
   void OnCommand(uint8_t handle, const Command &command);
 
@@ -71,8 +72,8 @@ class CommandHandler : public noncopyable {
  private:
   std::multimap<uint16_t, Command> message_registers_;
   apr_pool_t *mem_pool_;
-  boost::scoped_ptr<CommandHandlerImpl> impl_;
-  boost::mutex mutex_;
+  std::unique_ptr<CommandHandlerImpl> impl_;
+  std::mutex mutex_;
   IOLoop *loop_;
 };
 
@@ -84,7 +85,7 @@ class CommandHandlerImpl : public CommandChannelDelegate {
   virtual bool AddDevice(const DeviceInfo &info) = 0;
   virtual bool RemoveDevice(uint8_t handle) = 0;
 
-  virtual bool SendCommand(uint8_t handle, const Command &command) = 0;
+  virtual livox_status SendCommand(uint8_t handle, const Command &command) = 0;
 
   virtual void OnCommand(uint8_t handle, const Command &command) {
     if (handler_) {

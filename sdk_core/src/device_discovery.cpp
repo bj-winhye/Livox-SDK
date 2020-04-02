@@ -24,8 +24,7 @@
 
 #include "device_discovery.h"
 #include <algorithm>
-#include <boost/thread/lock_guard.hpp>
-#include <boost/thread/locks.hpp>
+#include <mutex>
 #include <iostream>
 #include <vector>
 #include "apr_network_io.h"
@@ -41,7 +40,7 @@
 #include "device_manager.h"
 #include "livox_def.h"
 
-using boost::tuple;
+using std::tuple;
 using std::string;
 using std::vector;
 
@@ -66,7 +65,7 @@ bool DeviceDiscovery::Start(IOLoop *loop) {
     return false;
   }
   loop_ = loop;
-  sock_ = util::CreateBindSocket(kListenPort, mem_pool_);
+  sock_ = util::CreateBindSocket(kListenPort, mem_pool_, true);
   if (sock_ == NULL) {
     LOG_ERROR("DeviceDiscovery Create Socket Failed");
     return false;
@@ -84,7 +83,7 @@ void DeviceDiscovery::OnData(apr_socket_t *sock, void *) {
 
   comm_port_->UpdateCacheWrIdx(size);
   if (rv != APR_SUCCESS) {
-    LOG_ERROR(" Receive Failed {}", PrintAPRStatus(rv));
+    LOG_WARN(" Receive Failed {}", PrintAPRStatus(rv));
     return;
   }
   CommPacket packet;
@@ -97,10 +96,10 @@ void DeviceDiscovery::OnData(apr_socket_t *sock, void *) {
       if (connecting_devices_.find(sock) == connecting_devices_.end()) {
         continue;
       }
-      DeviceInfo info = boost::get<2>(connecting_devices_[sock]);
+      DeviceInfo info = std::get<2>(connecting_devices_[sock]);
       loop_->RemoveDelegate(sock, this);
       apr_socket_close(sock);
-      apr_pool_destroy(boost::get<0>(connecting_devices_[sock]));
+      apr_pool_destroy(std::get<0>(connecting_devices_[sock]));
       connecting_devices_.erase(sock);
 
       if (packet.data == NULL) {
@@ -124,10 +123,10 @@ void DeviceDiscovery::OnTimer(apr_time_t now) {
   ConnectingDeviceMap::iterator ite = connecting_devices_.begin();
   while (ite != connecting_devices_.end()) {
     tuple<apr_pool_t *, apr_time_t, DeviceInfo> &device_tuple = ite->second;
-    if (now - boost::get<1>(device_tuple) > apr_time_from_msec(500)) {
+    if (now - std::get<1>(device_tuple) > apr_time_from_msec(500)) {
       loop_->RemoveDelegate(ite->first, this);
       apr_socket_close(ite->first);
-      apr_pool_destroy(boost::get<0>(device_tuple));
+      apr_pool_destroy(std::get<0>(device_tuple));
       connecting_devices_.erase(ite++);
     } else {
       ++ite;
@@ -137,6 +136,7 @@ void DeviceDiscovery::OnTimer(apr_time_t now) {
 
 void DeviceDiscovery::Uninit() {
   if (sock_) {
+    loop_->RemoveDelegate(sock_, this);
     apr_socket_close(sock_);
     sock_ = NULL;
   }
@@ -156,24 +156,10 @@ void DeviceDiscovery::OnBroadcast(const CommPacket &packet, apr_sockaddr_t *addr
     return;
   }
 
-  BroadcastDeviceInfo *device_info = (BroadcastDeviceInfo *)packet.data;
-  string broadcast_code = device_info->broadcast_code;
-  LOG_INFO(" Boradcast broadcast code: {}", broadcast_code);
-  device_manager().BroadcastDevices(device_info);
-  DeviceInfo lidar_info;
-  bool found = device_manager().FindDevice(broadcast_code, lidar_info);
-  if (!found || device_manager().IsDeviceConnected(lidar_info.handle)) {
-    return;
-  }
-
-  ++port_count;
-  strncpy(lidar_info.broadcast_code, broadcast_code.c_str(), sizeof(lidar_info.broadcast_code));
-  lidar_info.cmd_port = kListenPort + kCmdPortOffset + port_count;
-  lidar_info.data_port = kListenPort + kDataPortOffset + port_count;
-  lidar_info.type = device_info->dev_type;
-  lidar_info.state = kLidarStateUnknown;
-  lidar_info.feature = kLidarFeatureNone;
-  lidar_info.status.status_code = 0;
+  BroadcastDeviceInfo device_info;
+  memcpy((void*)(&device_info),(void*)(packet.data),(sizeof(BroadcastDeviceInfo)-sizeof(device_info.ip)));
+  string broadcast_code = device_info.broadcast_code;
+  LOG_INFO(" Broadcast broadcast code: {}", broadcast_code);
 
   char ip[16];
   memset(&ip, 0, sizeof(ip));
@@ -182,6 +168,31 @@ void DeviceDiscovery::OnBroadcast(const CommPacket &packet, apr_sockaddr_t *addr
     LOG_ERROR(PrintAPRStatus(rv));
     return;
   }
+  strncpy(device_info.ip, ip, sizeof(device_info.ip));
+  
+  device_manager().BroadcastDevices(&device_info);
+ 
+  DeviceInfo lidar_info;
+  bool found = device_manager().FindDevice(broadcast_code, lidar_info);
+
+  if (!found) {
+    LOG_INFO("Broadcast code : {} not add to connect", broadcast_code);
+  }
+
+  if (!found || device_manager().IsDeviceConnected(lidar_info.handle)) {
+    return;
+  }
+
+  ++port_count;
+  strncpy(lidar_info.broadcast_code, broadcast_code.c_str(), sizeof(lidar_info.broadcast_code));
+  lidar_info.cmd_port = kListenPort + kCmdPortOffset + port_count;
+  lidar_info.data_port = kListenPort + kDataPortOffset + port_count;
+  lidar_info.sensor_port = kListenPort + kSensorPortOffset + port_count;
+  lidar_info.type = device_info.dev_type;
+  lidar_info.state = kLidarStateUnknown;
+  lidar_info.feature = kLidarFeatureNone;
+  lidar_info.status.progress = 0;
+
   strncpy(lidar_info.ip, ip, sizeof(lidar_info.ip));
   apr_pool_t *pool = NULL;
   rv = apr_pool_create(&pool, mem_pool_);
@@ -199,18 +210,19 @@ void DeviceDiscovery::OnBroadcast(const CommPacket &packet, apr_sockaddr_t *addr
 
   loop_->AddDelegate(cmd_sock, this);
   OnTimer(apr_time_now());
-  boost::get<0>(connecting_devices_[cmd_sock]) = pool;
-  boost::get<2>(connecting_devices_[cmd_sock]) = lidar_info;
+  std::get<0>(connecting_devices_[cmd_sock]) = pool;
+  std::get<2>(connecting_devices_[cmd_sock]) = lidar_info;
 
   bool result = false;
   do {
     HandshakeRequest handshake_req;
     uint32_t local_ip = 0;
-    if (util::FindLocalIP(addr->sa.sin, local_ip) == false) {
+    if (util::FindLocalIp(addr->sa.sin, local_ip) == false) {
       result = false;
+      LOG_INFO("LocalIp and DeviceIp are not in same subnet");
       break;
     }
-    LOG_INFO(" LocalIP: {}", inet_ntoa(*(struct in_addr *)&local_ip));
+    LOG_INFO("LocalIP: {}", inet_ntoa(*(struct in_addr *)&local_ip));
     LOG_INFO("Command Port: {}", lidar_info.cmd_port);
     LOG_INFO("Data Port: {}", lidar_info.data_port);
     CommPacket packet;
@@ -218,6 +230,7 @@ void DeviceDiscovery::OnBroadcast(const CommPacket &packet, apr_sockaddr_t *addr
     handshake_req.ip_addr = local_ip;
     handshake_req.cmd_port = lidar_info.cmd_port;
     handshake_req.data_port = lidar_info.data_port;
+    handshake_req.sensor_port = lidar_info.sensor_port;
     packet.packet_type = kCommandTypeAck;
     packet.seq_num = CommandChannel::GenerateSeq();
     packet.cmd_set = kCommandSetGeneral;
@@ -233,7 +246,7 @@ void DeviceDiscovery::OnBroadcast(const CommPacket &packet, apr_sockaddr_t *addr
       result = false;
       break;
     }
-    boost::get<1>(connecting_devices_[cmd_sock]) = apr_time_now();
+    std::get<1>(connecting_devices_[cmd_sock]) = apr_time_now();
     result = true;
   } while (0);
 
@@ -244,6 +257,7 @@ void DeviceDiscovery::OnBroadcast(const CommPacket &packet, apr_sockaddr_t *addr
     connecting_devices_.erase(cmd_sock);
   }
 }
+
 
 DeviceDiscovery &device_discovery() {
   static DeviceDiscovery discovery;

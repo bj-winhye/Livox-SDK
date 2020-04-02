@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['u8string_5fview',['u8string_view',['../classfmt_1_1v5_1_1u8string__view.html',1,'fmt::v5::u8string_view'],['../classfmt_1_1v5_1_1u8string__view.html#ace3a1b7f6bca7b364411dd7bca8eb666',1,'fmt::v5::u8string_view::u8string_view(const char *s)'],['../classfmt_1_1v5_1_1u8string__view.html#a7d8fc1c8138683c75574261561e78652',1,'fmt::v5::u8string_view::u8string_view(const char *s, size_t count)']]],
+  ['u8string_5fview',['u8string_view',['../classfmt_1_1v5_1_1u8string__view.html',1,'fmt::v5']]],
+  ['u8string_5fview',['u8string_view',['../classfmt_1_1v5_1_1u8string__view.html#ace3a1b7f6bca7b364411dd7bca8eb666',1,'fmt::v5::u8string_view::u8string_view(const char *s)'],['../classfmt_1_1v5_1_1u8string__view.html#a7d8fc1c8138683c75574261561e78652',1,'fmt::v5::u8string_view::u8string_view(const char *s, size_t count)']]],
   ['uint_5ftype',['uint_type',['../namespacefmt_1_1v5_1_1internal.html#af8b98afef956b03a99bc61d088705f13a9c9273f21d9f37b64f17801628d44633',1,'fmt::v5::internal']]],
   ['uint_5fvalue',['uint_value',['../classfmt_1_1v5_1_1internal_1_1value.html#aea22330ef411f765099b2962090e56d4',1,'fmt::v5::internal::value']]],
   ['ulong_5flong_5ftype',['ulong_long_type',['../namespacefmt_1_1v5_1_1internal.html#af8b98afef956b03a99bc61d088705f13a23b2dd85fe035d41a5e93822e346d277',1,'fmt::v5::internal']]],

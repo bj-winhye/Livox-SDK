@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['r_5fformatter',['R_formatter',['../classspdlog_1_1details_1_1_r__formatter.html',1,'spdlog::details::R_formatter'],['../classspdlog_1_1details_1_1r__formatter.html',1,'spdlog::details::r_formatter']]],
+  ['r_5fformatter',['r_formatter',['../classspdlog_1_1details_1_1r__formatter.html',1,'spdlog::details::r_formatter'],['../classspdlog_1_1details_1_1_r__formatter.html',1,'spdlog::details::R_formatter']]],
   ['rainfogsuppressrequestitem',['RainFogSuppressRequestItem',['../struct_rain_fog_suppress_request_item.html',1,'']]],
   ['registry',['registry',['../classspdlog_1_1details_1_1registry.html',1,'spdlog::details']]],
   ['result',['result',['../structfmt_1_1v5_1_1internal_1_1function_1_1result.html',1,'fmt::v5::internal::function']]],

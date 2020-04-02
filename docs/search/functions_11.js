@@ -2,6 +2,7 @@ var searchData=
 [
   ['r_5fformatter',['r_formatter',['../classspdlog_1_1details_1_1r__formatter.html#ac3be2e36215d0335d859af35a35e2810',1,'spdlog::details::r_formatter::r_formatter()'],['../classspdlog_1_1details_1_1_r__formatter.html#a712095b0b26244817d78963d98a9a6fb',1,'spdlog::details::R_formatter::R_formatter()']]],
   ['read',['read',['../classfmt_1_1v5_1_1file.html#a37037657920e57b50756d59259cff494',1,'fmt::v5::file']]],
+  ['rebootdevice',['RebootDevice',['../livox__sdk_8h.html#a26f01524ebf2ab15e0d134fdeb7c49f2',1,'livox_sdk.h']]],
   ['register_5flogger',['register_logger',['../classspdlog_1_1details_1_1registry.html#ab77fb7513b2e3e6442a83f037543e391',1,'spdlog::details::registry::register_logger()'],['../namespacespdlog.html#a306f1c2ef42ba046620bd84266ee5b24',1,'spdlog::register_logger()']]],
   ['registry',['registry',['../classspdlog_1_1details_1_1registry.html#ab5c1a2f7b8e2e9eec4e0fa75d9167f3b',1,'spdlog::details::registry']]],
   ['remove',['remove',['../namespacespdlog_1_1details_1_1os.html#a6026b23c139f733601c1a5fa9f4d555f',1,'spdlog::details::os']]],

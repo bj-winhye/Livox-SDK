@@ -1,32 +1,9 @@
-/*
-@ @licstart  The following is the entire license notice for the
-JavaScript code in this file.
-
-Copyright (C) 1997-2017 by Dimitri van Heesch
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License along
-with this program; if not, write to the Free Software Foundation, Inc.,
-51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-
-@licend  The above is the entire license notice
-for the JavaScript code in this file
-*/
 var NAVTREE =
 [
   [ "Livox SDK API", "index.html", [
     [ "1 Introduction", "index.html", null ],
-    [ "Namespaces", "namespaces.html", [
-      [ "Namespace List", "namespaces.html", "namespaces_dup" ],
+    [ "Namespaces", null, [
+      [ "Namespace List", "namespaces.html", "namespaces" ],
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", "namespacemembers_dup" ],
         [ "Functions", "namespacemembers_func.html", "namespacemembers_func" ],
@@ -50,10 +27,10 @@ var NAVTREE =
         [ "Related Functions", "functions_rela.html", null ]
       ] ]
     ] ],
-    [ "Files", "files.html", [
-      [ "File List", "files.html", "files_dup" ],
+    [ "Files", null, [
+      [ "File List", "files.html", "files" ],
       [ "File Members", "globals.html", [
-        [ "All", "globals.html", null ],
+        [ "All", "globals.html", "globals_dup" ],
         [ "Functions", "globals_func.html", null ],
         [ "Typedefs", "globals_type.html", null ],
         [ "Enumerations", "globals_enum.html", null ],
@@ -67,16 +44,17 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_fast_c_r_c_8h.html",
-"classfmt_1_1v5_1_1format__int.html#afde6e35fd703a48b346c0dd969bd6b1c",
-"classfmt_1_1v5_1_1internal_1_1truncating__iterator__base.html#a9722e33a6fdfb563b8db59829f133711",
-"classspdlog_1_1details_1_1registry.html#a43cb4919dd9f66cf4eeeeaf9774caade",
-"classspdlog_1_1sinks_1_1wincolor__sink.html#a5032da6fc760507134a7d1eff1a20b0a",
-"core_8h.html#a0af13074db7b689a71bd9ae94f8745a1",
-"format_8h.html#a7c29e7b4a54045f13bd664979804998d",
-"log__msg_8h_source.html",
-"spdlog_8h.html#ab1211636fc47637f4dc5ee9a18aa1bce",
-"structfmt_1_1v5_1_1format__handler.html#a717e330f9b9cfa519cbf97e5e2a81add",
-"structfmt_1_1v5_1_1internal_1_1make__integer__sequence.html"
+"classfmt_1_1v5_1_1internal_1_1add__thousands__sep.html#a2b67cdb6e9828877661e6fd9348206f3",
+"classfmt_1_1v5_1_1internal_1_1value.html",
+"classspdlog_1_1details_1_1registry.html#a78eb75a31640c0bb204d7f2123ba825c",
+"classspdlog_1_1sinks_1_1wincolor__sink.html#aa148f87d2c8b234c306009268ac7b812",
+"core_8h.html#a1a322107307b020b6eac933958da94f6",
+"format_8h.html#a87104ff0bbd588f55bbbadf592227d75",
+"livox__sdk_8h.html#a50113f962476f9fba5f5dd755ceb876f",
+"protocol_8h.html#ad7370a98d65fd20693ed58a470ec9439",
+"struct_hub_set_imu_push_frequency_response.html#a6d54072d7626c25fce05f9cc84bfb8ba",
+"structfmt_1_1v5_1_1formatter_3_01std_1_1chrono_1_1duration_3_01_rep_00_01_period_01_4_00_01_char_01_4.html",
+"structfmt_1_1v5_1_1internal_1_1result__of.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
